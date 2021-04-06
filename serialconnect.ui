@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SerialConnect</class>
+ <widget class="QWidget" name="SerialConnect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>283</width>
+    <height>96</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="ClickedComboBox" name="cb_serial">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift Light</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox
+{
+	border:transparent;   
+	color: rgb(255, 255, 255);
+    background-color:#393e46;
+    padding: 5px 5px 5px 20px;
+
+}
+QComboBox QAbstractItemView{
+    border:1px solid rgb(109,109,109);
+    border:2px;
+}
+QComboBox::drop-down:disabled {
+    width: 20px;
+    border:transparent; 
+	background-color:rgb(109, 109, 109) ;
+}
+QComboBox::drop-down {
+    width: 0px;
+    border:transparent; 
+	background-color: #0065a3;
+
+}
+QComboBox::down-arrow {
+    padding:10px;
+	color: rgb(255, 255, 255);
+}
+QComboBox QAbstractItemView:item{
+    border:transparent; 
+	color: rgb(255, 255, 255);
+	background-color:rgb(57, 57, 57);
+	padding: 2px 2px 2px 18px;
+	height:22px;
+}
+QListView::item {
+    background: white;
+	border:transparent;
+}
+ 
+QListView::item:hover {
+    background: #BDD7FD;
+}
+
+QComboBox QScrollBar::vertical{ /*主体部分*/
+    width:5px;
+    background-color:rgb(57, 57, 57);
+    border:none;
+}
+QComboBox QScrollBar::handle::vertical{ /*滑块主体*/
+    border-radius:5px;
+    width: 5px;
+    background:rgb(0, 170, 255);
+}
+QComboBox QScrollBar::handle::vertical::hover{
+    background:rgb(50,50,50);
+}
+QComboBox QScrollBar::add-line::vertical{/*上箭头*/
+    border:none;
+}
+QComboBox QScrollBar::sub-line::vertical{/*下箭头*/
+    border:none;
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>COM1</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="bn_connect">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift Light</family>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: #222831;
+background-color:#00ADB5;
+border:transparent;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bn_connect_3">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift Light</family>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: #222831;
+background-color:#00ADB5;
+border:transparent;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Burner</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bn_setting">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift Light</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: #222831;
+background-color:#00ADB5;
+border:transparent;
+padding: 5px;
+	image: url(:/icon/icon/setting.png);
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bn_getIP">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Bahnschrift Light</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: #222831;
+background-color:#00ADB5;
+border:transparent;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>IP</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ClickedComboBox</class>
+   <extends>QComboBox</extends>
+   <header>clickedcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icon/switch-off.png</file>
+        <file>icon/switch-on.png</file>
+        <file>icon/photo.png</file>
+        <file>icon/timer_icon.png</file>
+        <file>icon/phototimer.png</file>
+        <file>icon/photo_w.png</file>
+        <file>icon/setting.png</file>
+        <file>icon/save.png</file>
+        <file>icon/no.png</file>
+        <file>icon/USB.png</file>
+        <file>icon/wifi.png</file>
+        <file>icon/disconnect.png</file>
+        <file>icon/Warring.png</file>
+        <file>icon/error.png</file>
+        <file>icon/loading (1).gif</file>
+        <file>icon/loading.gif</file>
+    </qresource>
+</RCC>
