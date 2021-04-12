@@ -92,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if( _setting->contains("DeviceIP"))
     {
-        _httpWidget->setIPAndConnect(_setting->value("DeviceIP").toString());
+        _httpWidget->setIPAndConnect(_setting->value("DeviceIP").toString(), false);
     }
 
     if( _setting->contains("photoDialogState"))
@@ -119,15 +119,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->cb_FrameSize->setModel(listSetial->model());
     ui->cb_FrameSize->setView(listSetial);
 
-    ui->cb_FrameSize->addItem("UXGA(1600x1200)" ,13);
-    ui->cb_FrameSize->addItem("SXGA(1280x1024)" ,12);
-    ui->cb_FrameSize->addItem("XGA(1024x768)"   ,10);
+//    ui->cb_FrameSize->addItem("UXGA(1600x1200)" ,13);
+//    ui->cb_FrameSize->addItem("SXGA(1280x1024)" ,12);
+//    ui->cb_FrameSize->addItem("XGA(1024x768)"   ,10);
     ui->cb_FrameSize->addItem("SVGA(800x600)"   ,9);
     ui->cb_FrameSize->addItem("VGA(640x480)"    ,8);
     ui->cb_FrameSize->addItem("CIF(400x296)"    ,6);
     ui->cb_FrameSize->addItem("QVGA(320x240)"   ,5);
     ui->cb_FrameSize->addItem("HQVGA(240x176)"  ,3);
     ui->cb_FrameSize->addItem("QQVGA(160x120)"  ,1);
+
+    ui->comboBox_2->addItem("negative", 1);
+    ui->comboBox_2->addItem("black and white", 2);
+    ui->comboBox_2->addItem("greenish", 3);
+    ui->comboBox_2->addItem("reddish", 4);
+    ui->comboBox_2->addItem("blue", 3);
+    ui->comboBox_2->addItem("retro", 3);
+    ui->comboBox_2->setCurrentIndex(0);
 
     QListWidget *listSetial_connect = new QListWidget(this);
     listSetial_connect->setItemDelegate(new NoFocusFrameDelegate(this));
@@ -308,7 +316,17 @@ void MainWindow::anaCMDData(quint8 cmd,QByteArray dataArray)
             }
             else if( dataArray.at(0) == 3 )
             {
+                waitDialog.ErrorMsgBos("Error","Connect FAIL\n"
+                                               "Auth Error",true);
 
+                _serialWidget->setWifiConfig();
+            }
+            else if( dataArray.at(0) == 1 )
+            {
+                waitDialog.ErrorMsgBos("Error","Connect FAIL\n"
+                                               "Pls retry",true);
+
+                _serialWidget->setWifiConfig();
             }
             else if( dataArray.at(0) == 0 )
             {
@@ -520,32 +538,32 @@ void MainWindow::on_bn_savePath_pressed()
 
 void MainWindow::on_hs_Brightness_valueChanged(int value)
 {
-    sendCmdToDevicd(4,qint16(value));
+//    sendCmdToDevicd(4,qint16(value));
 }
 
 void MainWindow::on_hs_Quality_valueChanged(int value)
 {
-    sendCmdToDevicd(2,qint16(value));
+//    sendCmdToDevicd(2,qint16(value));
 }
 
 void MainWindow::on_hs_Contrast_valueChanged(int value)
 {
-    sendCmdToDevicd(3,qint16(value));
+//    sendCmdToDevicd(3,qint16(value));
 }
 
 void MainWindow::on_hs_Saturation_valueChanged(int value)
 {
-    sendCmdToDevicd(5,qint16(value));
+//    sendCmdToDevicd(5,qint16(value));
 }
 
 void MainWindow::on_hs_AELevel_valueChanged(int value)
 {
-    sendCmdToDevicd(24,qint16(value));
+//    sendCmdToDevicd(24,qint16(value));
 }
 
 void MainWindow::on_hs_Gain_valueChanged(int value)
 {
-    sendCmdToDevicd(6,qint16(value));
+//    sendCmdToDevicd(6,qint16(value));
 }
 void MainWindow::setMainDialogSize(bool mode)
 {
@@ -650,4 +668,44 @@ void MainWindow::on_bn_timer_clicked(bool checked)
     {
         _PhotoTimer->stop();
     }
+}
+
+void MainWindow::on_hs_Quality_sliderReleased()
+{
+    sendCmdToDevicd(2,qint16(ui->hs_Quality->value()));
+}
+
+void MainWindow::on_hs_Brightness_sliderReleased()
+{
+    sendCmdToDevicd(4,qint16(ui->hs_Brightness->value()));
+}
+
+void MainWindow::on_hs_Contrast_sliderReleased()
+{
+    sendCmdToDevicd(3, qint16(ui->hs_Contrast->value()));
+}
+
+void MainWindow::on_hs_Saturation_sliderReleased()
+{
+    sendCmdToDevicd(5, qint16(ui->hs_Saturation->value()));
+}
+
+void MainWindow::on_hs_AELevel_sliderReleased()
+{
+    sendCmdToDevicd(24, qint16(ui->hs_AELevel->value()));
+}
+
+void MainWindow::on_hs_Gain_sliderReleased()
+{
+    sendCmdToDevicd(6, qint16(ui->hs_Gain->value()));
+}
+
+void MainWindow::on_comboBox_2_currentIndexChanged(int index)
+{
+    sendCmdToDevicd(22, qint16(index));
+}
+
+void MainWindow::on_bn_photo_3_clicked()
+{
+
 }

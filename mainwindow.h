@@ -77,6 +77,22 @@ private slots:
     void on_Bn_Exit_pressed();
     void on_bn_timer_clicked(bool checked);
 
+    void on_hs_Quality_sliderReleased();
+
+    void on_hs_Brightness_sliderReleased();
+
+    void on_hs_Contrast_sliderReleased();
+
+    void on_hs_Saturation_sliderReleased();
+
+    void on_hs_AELevel_sliderReleased();
+
+    void on_hs_Gain_sliderReleased();
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_bn_photo_3_clicked();
+
 private:
     Ui::MainWindow *ui;
 
